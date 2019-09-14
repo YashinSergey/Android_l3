@@ -1,24 +1,26 @@
 package com.example.mvp;
 
-import java.util.ArrayList;
-import java.util.List;
+import android.annotation.SuppressLint;
+import java.util.HashMap;
+import java.util.Map;
 
 class Model {
 
-    private List<Integer> mList;
+    private Map<Integer, Integer> countMap;
 
+    @SuppressLint("UseSparseArrays")
     Model() {
-        this.mList = new ArrayList<>(3);
-        mList.add(0);
-        mList.add(0);
-        mList.add(0);
+        this.countMap = new HashMap<>(3);
+        countMap.put(0, 0);
+        countMap.put(1, 0);
+        countMap.put(2, 0);
     }
 
-    int getElementValueByIndex(int index) {
-        return mList.get(index);
+    int getElementValueByKey(int key) {
+        return countMap.get(key);
     }
 
-    void setElementValueByIndex(int index, int value) {
-        mList.set(index, value);
+    void setElementValueByKey(int key, int value) {
+        countMap.put(key, value);
     }
 }

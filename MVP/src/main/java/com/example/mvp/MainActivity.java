@@ -38,32 +38,32 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
 
     @Override
     public void onClick(View view) {
-        int btn = 0;
+        int btn = -1;
         switch (view.getId()) {
             case R.id.btnCounter1:
-                btn = 1;
+                btn = 0;
                 break;
             case R.id.btnCounter2:
-                btn = 2;
+                btn = 1;
                 break;
             case R.id.btnCounter3:
-                btn = 3;
+                btn = 2;
                 break;
         }
-        if (btn != 0) presenter.onClick(btn);
+        if (btn != -1) presenter.onClick(btn);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
     public void setButtonText(int btn, int value) {
         switch (btn) {
-            case 1:
+            case 0:
                 btn1.setText("Количество = " + value);
                 break;
-            case 2:
+            case 1:
                 btn2.setText("Количество = " + value);
                 break;
-            case 3:
+            case 2:
                 btn3.setText("Количество = " + value);
                 break;
         }
