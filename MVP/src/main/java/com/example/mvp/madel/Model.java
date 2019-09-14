@@ -1,26 +1,26 @@
-package com.example.mvp;
+package com.example.mvp.madel;
 
 import android.annotation.SuppressLint;
 import java.util.HashMap;
 import java.util.Map;
 
-class Model {
+public class Model {
 
     private Map<Integer, Integer> countMap;
 
     @SuppressLint("UseSparseArrays")
-    Model() {
+    public Model() {
         this.countMap = new HashMap<>(3);
         countMap.put(0, 0);
         countMap.put(1, 0);
         countMap.put(2, 0);
     }
 
-    int getElementValueByKey(int key) {
+    public int getElementValueByKey(int key) {
         return countMap.get(key);
     }
 
-    void setElementValueByKey(int key, int value) {
+    public void setElementValueByKey(int key, int value) {
         countMap.put(key, value);
     }
 }

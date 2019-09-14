@@ -1,4 +1,4 @@
-package com.example.mvp;
+package com.example.mvp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,10 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.mvp.MainView;
+import com.example.mvp.R;
+import com.example.mvp.presenter.Presenter;
 
 public class MainActivity extends AppCompatActivity implements MainView, View.OnClickListener {
 

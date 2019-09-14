@@ -1,11 +1,14 @@
-package com.example.mvp;
+package com.example.mvp.presenter;
 
-class Presenter {
+import com.example.mvp.MainView;
+import com.example.mvp.madel.Model;
+
+public class Presenter {
 
     private Model model;
     private MainView view;
 
-    Presenter(MainView view) {
+    public Presenter(MainView view) {
         model = new Model();
         this.view = view;
     }
@@ -16,7 +19,7 @@ class Presenter {
         view.setButtonText(key, newValue);
     }
 
-    void onClick(int btnNum) {
+    public void onClick(int btnNum) {
         calcNewModelValue(btnNum);
     }
 }
