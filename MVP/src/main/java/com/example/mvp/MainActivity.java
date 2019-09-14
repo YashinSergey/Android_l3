@@ -10,33 +10,62 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity implements MainView, View.OnClickListener {
 
     private Presenter presenter;
+    private Button btn1;
+    private Button btn2;
+    private Button btn3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initButtons();
         setOnClickListeners();
         presenter = new Presenter(this);
     }
 
+    private void initButtons() {
+        btn1 = findViewById(R.id.btnCounter1);
+        btn2 = findViewById(R.id.btnCounter2);
+        btn3 = findViewById(R.id.btnCounter3);
+    }
+
     private void setOnClickListeners() {
-        findViewById(R.id.btnCounter1).setOnClickListener(this);
-        findViewById(R.id.btnCounter2).setOnClickListener(this);
-        findViewById(R.id.btnCounter3).setOnClickListener(this);
+        btn1.setOnClickListener(this);
+        btn2.setOnClickListener(this);
+        btn3.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        presenter.onClick(view.getId());
+        int btn = 0;
+        switch (view.getId()) {
+            case R.id.btnCounter1:
+                btn = 1;
+                break;
+            case R.id.btnCounter2:
+                btn = 2;
+                break;
+            case R.id.btnCounter3:
+                btn = 3;
+                break;
+        }
+        if (btn != 0) presenter.onClick(btn);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void setButtonText(int id, int value) {
-        Button button = findViewById(id);
-        if (button != null) {
-            button.setText("Количество = " + value);
+    public void setButtonText(int btn, int value) {
+        switch (btn) {
+            case 1:
+                btn1.setText("Количество = " + value);
+                break;
+            case 2:
+                btn2.setText("Количество = " + value);
+                break;
+            case 3:
+                btn3.setText("Количество = " + value);
+                break;
         }
     }
 }

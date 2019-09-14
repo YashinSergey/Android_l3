@@ -10,22 +10,28 @@ class Presenter {
         this.view = view;
     }
 
-    private void updateValue(int index, int id) {
-        int newValue = model.getElementValueByIndex(index) + 1;
-        model.setElementValueByIndex(index, newValue);
-        view.setButtonText(id, newValue);
+    private int calcNewModelValue(int index) {
+        int currentValue = model.getElementValueByIndex(index);
+        return currentValue + 1;
     }
 
-    void onClick(int id) {
-        switch (id) {
-            case R.id.btnCounter1:
-                updateValue(0,id);
+    void onClick(int btnNum) {
+        int newModelValue;
+        switch (btnNum) {
+            case 1:
+                newModelValue = calcNewModelValue(0);
+                model.setElementValueByIndex(0, newModelValue);
+                view.setButtonText(1, newModelValue);
                 break;
-            case R.id.btnCounter2:
-                updateValue(1,id);
+            case 2:
+                newModelValue = calcNewModelValue(1);
+                model.setElementValueByIndex(1, newModelValue);
+                view.setButtonText(2, newModelValue);
                 break;
-            case R.id.btnCounter3:
-                updateValue(2,id);
+            case 3:
+                newModelValue = calcNewModelValue(2);
+                model.setElementValueByIndex(2, newModelValue);
+                view.setButtonText(3, newModelValue);
                 break;
         }
     }
