@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MVP</string>
+    <string name="counter_1">Счетчик1</string>
+    <string name="counter_2">Счетчик2</string>
+    <string name="counter_3">Счетчик3</string>
+    <string name="num_1">Количество = 0</string>
+    <string name="num_2">Количество = 0</string>
+    <string name="num_3">Количество = 0</string>
+</resources>
