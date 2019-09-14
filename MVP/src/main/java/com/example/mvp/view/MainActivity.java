@@ -34,17 +34,17 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
     }
 
     private void initButtons() {
-        btn0 = findViewById(R.id.btnCounter1);
-        btn1 = findViewById(R.id.btnCounter2);
-        btn2 = findViewById(R.id.btnCounter3);
+        btn0 = findViewById(R.id.btnCounter0);
+        btn1 = findViewById(R.id.btnCounter1);
+        btn2 = findViewById(R.id.btnCounter2);
     }
 
     @SuppressLint("UseSparseArrays")
     private void initButtonMap() {
         buttonMap = new HashMap<>(3);
-        buttonMap.put(R.id.btnCounter1, 0);
-        buttonMap.put(R.id.btnCounter2, 1);
-        buttonMap.put(R.id.btnCounter3, 2);
+        buttonMap.put(R.id.btnCounter0, 0);
+        buttonMap.put(R.id.btnCounter1, 1);
+        buttonMap.put(R.id.btnCounter2, 2);
     }
 
     private void setOnClickListeners() {
@@ -55,22 +55,13 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
 
     @Override
     public void onClick(View view) {
-         presenter.onClick(buttonMap.get(view.getId()));
+         presenter.onClick(view.getId(), buttonMap.get(view.getId()));
     }
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void setButtonText(int btn, int value) {
-        switch (btn) {
-            case 0:
-                btn0.setText("Количество = " + value);
-                break;
-            case 1:
-                btn1.setText("Количество = " + value);
-                break;
-            case 2:
-                btn2.setText("Количество = " + value);
-                break;
-        }
+    public void setButtonText(int id, int value) {
+        Button button = findViewById(id);
+        if (button != null) button.setText("Количество = " + value);
     }
 }

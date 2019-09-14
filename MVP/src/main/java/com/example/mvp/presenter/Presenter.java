@@ -13,13 +13,13 @@ public class Presenter {
         this.view = view;
     }
 
-    private void calcNewModelValue(int key) {
+    private void calcNewModelValue(int id, int key) {
         int newValue = model.getElementValueByKey(key) + 1;
         model.setElementValueByKey(key, newValue);
-        view.setButtonText(key, newValue);
+        view.setButtonText(id, newValue);
     }
 
-    public void onClick(int btn) {
-        calcNewModelValue(btn);
+    public void onClick(int id, int btn) {
+        calcNewModelValue(id, btn);
     }
 }
