@@ -19,7 +19,7 @@ public class Presenter {
         view.setButtonText(key, newValue);
     }
 
-    public void onClick(int btnNum) {
-        calcNewModelValue(btnNum);
+    public void onClick(int btn) {
+        calcNewModelValue(btn);
     }
 }
