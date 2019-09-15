@@ -17,9 +17,6 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity implements MainView, View.OnClickListener {
 
     private Presenter presenter;
-    private Button btn0;
-    private Button btn1;
-    private Button btn2;
     private Map<Integer, Integer> buttonMap;
 
     @Override
@@ -27,16 +24,9 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initButtons();
         initButtonMap();
         setOnClickListeners();
         presenter = new Presenter(this);
-    }
-
-    private void initButtons() {
-        btn0 = findViewById(R.id.btnCounter0);
-        btn1 = findViewById(R.id.btnCounter1);
-        btn2 = findViewById(R.id.btnCounter2);
     }
 
     @SuppressLint("UseSparseArrays")
@@ -48,9 +38,9 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
     }
 
     private void setOnClickListeners() {
-        btn0.setOnClickListener(this);
-        btn1.setOnClickListener(this);
-        btn2.setOnClickListener(this);
+        findViewById(R.id.btnCounter0).setOnClickListener(this);
+        findViewById(R.id.btnCounter1).setOnClickListener(this);
+        findViewById(R.id.btnCounter2).setOnClickListener(this);
     }
 
     @Override
