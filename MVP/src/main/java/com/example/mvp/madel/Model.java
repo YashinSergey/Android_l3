@@ -23,4 +23,8 @@ public class Model {
     public void setElementValueByKey(int key, int value) {
         countMap.put(key, value);
     }
+
+    public int getCountMapSize() {
+        return countMap.size();
+    }
 }

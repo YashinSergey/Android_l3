@@ -1,5 +1,6 @@
 package com.example.mvp.view;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -41,6 +42,22 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
         findViewById(R.id.btnCounter0).setOnClickListener(this);
         findViewById(R.id.btnCounter1).setOnClickListener(this);
         findViewById(R.id.btnCounter2).setOnClickListener(this);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putIntArray("numbers", presenter.getNumbers());
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        int[] arr = savedInstanceState.getIntArray("numbers");
+        setButtonText(R.id.btnCounter0, arr[0]);
+        setButtonText(R.id.btnCounter1, arr[1]);
+        setButtonText(R.id.btnCounter2, arr[2]);
+        presenter.restoreValues(arr);
     }
 
     @Override
