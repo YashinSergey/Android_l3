@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".view.MainActivity">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -13,7 +13,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/counter_1" />
     <Button
-        android:id="@+id/btnCounter1"
+        android:id="@+id/btnCounter0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/num_1"/>
@@ -24,7 +24,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/counter_2" />
     <Button
-        android:id="@+id/btnCounter2"
+        android:id="@+id/btnCounter1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/num_2"/>
@@ -35,7 +35,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/counter_3" />
     <Button
-        android:id="@+id/btnCounter3"
+        android:id="@+id/btnCounter2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/num_3"/>
