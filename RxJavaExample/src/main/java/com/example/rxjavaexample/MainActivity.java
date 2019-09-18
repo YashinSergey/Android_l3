@@ -2,17 +2,16 @@ package com.example.rxjavaexample;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements MainView{
 
     private TextView textView;
     private EditText editText;
+    private Watcher watcher;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +19,8 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
 
         initViews();
-        editText.addTextChangedListener(new Watcher());
+        watcher = new Watcher(this);
+        editText.addTextChangedListener(watcher);
     }
 
     private void initViews() {
@@ -28,19 +28,8 @@ public class MainActivity extends AppCompatActivity{
         editText = findViewById(R.id.editText);
     }
 
-    class Watcher implements TextWatcher {
-
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-        }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            textView.setText(s);
-        }
+    @Override
+    public void addSymbol(String s) {
+        textView.setText(s);
     }
 }
