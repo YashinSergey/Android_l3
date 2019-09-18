@@ -10,7 +10,6 @@ public class MainActivity extends AppCompatActivity implements MainView{
 
     private TextView textView;
     private EditText editText;
-    private Watcher watcher;
 
 
     @Override
@@ -19,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements MainView{
         setContentView(R.layout.activity_main);
 
         initViews();
-        watcher = new Watcher(this);
+        Watcher watcher = new Watcher(this);
         editText.addTextChangedListener(watcher);
     }
 
