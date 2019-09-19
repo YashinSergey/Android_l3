@@ -11,15 +11,13 @@ public class MainActivity extends AppCompatActivity implements MainView{
     private TextView textView;
     private EditText editText;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         initViews();
-        Watcher watcher = new Watcher(this);
-        editText.addTextChangedListener(watcher);
+        editText.addTextChangedListener(new Watcher(this));
     }
 
     private void initViews() {
