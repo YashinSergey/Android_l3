@@ -1,2 +1,2 @@
-include ':app', ':MVP', ':RxJavaExample'
+include ':app', ':MVP', ':RxJavaExample', ':EventBusExample'
 rootProject.name='Android_l3'
