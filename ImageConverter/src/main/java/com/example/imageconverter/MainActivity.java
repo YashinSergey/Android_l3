@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 if (!sleep(4000)) return;
 
                 convertImage(bm, root,IMAGE_FOLDER);
-                
+
                 emitter.onComplete();
             }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
 
