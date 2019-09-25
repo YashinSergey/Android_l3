@@ -17,7 +17,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -73,19 +75,13 @@ public class MainActivity extends AppCompatActivity {
                 Uri selectedFile = data.getData();
                 Bitmap bm = MediaStore.Images.Media.getBitmap(MainActivity.this.getContentResolver(), selectedFile);
                 String root = Environment.getExternalStorageDirectory().toString();
-                File myDir = new File(root + IMAGE_FOLDER);
-                if (!myDir.exists()) {
-                    myDir.mkdirs();
-                }
-                try {
-                    Thread.sleep(4000);
-                } catch (InterruptedException e) {
-                    return;
-                }
-                FileOutputStream out = new FileOutputStream(new File(String.format("%s%s/res.png", root, IMAGE_FOLDER)));
-                bm.compress(Bitmap.CompressFormat.PNG, 100, out);
-                out.flush();
-                out.close();
+
+                createNewDirectory(root, IMAGE_FOLDER);
+
+                if (!sleep(4000)) return;
+
+                convertImage(bm, root,IMAGE_FOLDER);
+                
                 emitter.onComplete();
             }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
 
@@ -102,6 +98,34 @@ public class MainActivity extends AppCompatActivity {
             );
             showAlertDialog();
         }
+    }
+
+    private void createNewDirectory(String root, String folder) {
+        File myDir = new File(root + folder);
+        if (!myDir.exists()) {
+            myDir.mkdirs();
+        }
+    }
+
+    private void convertImage(Bitmap bm, String root, String folder) {
+        FileOutputStream out = null;
+        try {
+            out = new FileOutputStream(new File(String.format("%s%s/res.png", root, folder)));
+            bm.compress(Bitmap.CompressFormat.PNG, 100, out);
+            out.flush();
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private boolean sleep(int ms) {
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            return false;
+        }
+        return true;
     }
 
     private void showAlertDialog() {
