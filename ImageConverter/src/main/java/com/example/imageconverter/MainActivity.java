@@ -17,7 +17,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -143,8 +142,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Boolean setPermissions() {
         if (!checkPermissions()) {
-            ActivityCompat.requestPermissions(this, new String[]{
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE}, 5);
+            new Thread(() -> ActivityCompat.requestPermissions(MainActivity.this, new String[]{
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE}, 5)).start();
         }
         return checkPermissions();
     }
